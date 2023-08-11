@@ -10,50 +10,53 @@ class ScreenOnboardingWidget2 extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHight = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Kcolor.red,
-        elevation: 0,
+      backgroundColor: Kcolor.red,
+      extendBodyBehindAppBar: true,
+      body: Container(
+        margin: EdgeInsets.only(top: 40),
+        width: double.infinity,
+        height: screenHight / 1.05,
+        child: Image.asset(KImage.group),
       ),
-      body: Column(children: [
-        Stack(
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+            color: Colors.white),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              width: double.infinity,
-              height: screenHight / 1.05,
-              color: Kcolor.red,
+            const SizedBox(
+              height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 13),
-              child: Image.asset(
-                KImage.group,
+            Text(
+              "Your Password is\n Safe Here.",
+              style: GoogleFonts.poppins(
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
               ),
-            )
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              "Let’s create an secure Lorem ipsum dolor sit\namet, consectetur adipiscing elit, sed do\neiusmod tempor incididunt ut labore et\ndolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco\nlaboris nisi ut aliquip ex ea commodo.",
+              style: GoogleFonts.poppins(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: Kcolor.textGrey,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(
+              height: 100,
+            ),
           ],
         ),
-        // const SizedBox(
-        //   height: 30,
-        // ),
-        Text(
-          'Your Password is Safe Here.',
-          style: GoogleFonts.poppins(
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-          ),
-          textAlign: TextAlign.center,
-        ),
-        // const SizedBox(
-        //   height: 15,
-        // ),
-        Text(
-          'Lets create an secure Lorem ipsum dolor sit\namet, consectetur adipiscing elit, sed do\neiusmod tempor incididunt ut labore et\ndolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco\nlaboris nisi ut aliquip ex ea commodo.',
-          style: GoogleFonts.poppins(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: const Color.fromRGBO(0, 0, 0, 0.55),
-          ),
-          textAlign: TextAlign.center,
-        ),
-      ]),
+      ),
     );
+    
   }
 }

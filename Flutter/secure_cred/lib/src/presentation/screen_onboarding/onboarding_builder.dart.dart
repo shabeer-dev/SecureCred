@@ -7,12 +7,24 @@ import 'package:secure_cred/utils/shared_preference/shared_preference.dart';
 import 'package:secure_cred/utils/shared_preference/shared_preference_key.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class ScreenOnboarding extends StatelessWidget {
+class ScreenOnboarding extends StatefulWidget {
   const ScreenOnboarding({super.key});
 
   @override
+  State<ScreenOnboarding> createState() => _ScreenOnboardingState();
+}
+
+class _ScreenOnboardingState extends State<ScreenOnboarding> {
+  @override
   Widget build(BuildContext context) {
     final controller = PageController();
+    double? page = 0.0;
+    controller.addListener(() {
+      setState(() {
+        page = controller.page;
+        print(page);
+      });
+    });
     return Scaffold(
       body: NotificationListener<OverscrollIndicatorNotification>(
         onNotification: (overscroll) {
@@ -39,7 +51,7 @@ class ScreenOnboarding extends StatelessWidget {
                 SmoothPageIndicator(
                   controller: controller,
                   count: 2,
-                  effect: const WormEffect(
+                  effect: const ExpandingDotsEffect(
                     activeDotColor: Colors.black,
                     dotHeight: 8,
                     dotWidth: 8,
@@ -51,7 +63,7 @@ class ScreenOnboarding extends StatelessWidget {
                     Routes.pushNamed(Routes.login);
                   },
                   child: Text(
-                    'Skip',
+                    page == 1.0 ? 'Next' : 'Skip',
                     style: GoogleFonts.poppins(
                         fontSize: 15,
                         fontWeight: FontWeight.w500,

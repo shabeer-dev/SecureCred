@@ -12,42 +12,55 @@ class ScreenOnboardingWidget1 extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHight = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Kcolor.red,
       appBar: AppBar(
-        backgroundColor: Kcolor.red,
+        backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Column(
-        children: [
-          Container(
-            width: double.infinity,
-            height: screenHight / 1.05,
-            color: Kcolor.red,
-            child: Image.asset(KImage.agreement),
-          ),
-          // const SizedBox(
-          //   height: 40,
-          // ),
-          Text(
-            "Protect Your Documents\nwith SecureCred",
-            style: GoogleFonts.poppins(
-              fontSize: 20,
-              fontWeight: FontWeight.w700,
+      extendBodyBehindAppBar: true,
+      body: Container(
+        margin: EdgeInsets.only(top: 40),
+        width: double.infinity,
+        height: screenHight / 1.05,
+        child: Image.asset(KImage.agreement),
+      ),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+            color: Colors.white),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(
+              height: 20,
             ),
-            textAlign: TextAlign.center,
-          ),
-          // const SizedBox(
-          //   height:15,
-          // ),
-          Text(
-            "Let’s create an secure Lorem ipsum dolor sit\namet, consectetur adipiscing elit, sed do\neiusmod tempor incididunt ut labore et\ndolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco\nlaboris nisi ut aliquip ex ea commodo.",
-            style: GoogleFonts.poppins(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Kcolor.textGrey,
+            Text(
+              "Protect Your Documents\nwith SecureCred",
+              style: GoogleFonts.poppins(
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
-          ),
-        ],
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              "Let’s create an secure Lorem ipsum dolor sit\namet, consectetur adipiscing elit, sed do\neiusmod tempor incididunt ut labore et\ndolore magna aliqua. Ut enim ad minim\nveniam, quis nostrud exercitation ullamco\nlaboris nisi ut aliquip ex ea commodo.",
+              style: GoogleFonts.poppins(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: Kcolor.textGrey,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(
+              height: 100,
+            ),
+          ],
+        ),
       ),
     );
   }
